@@ -1,6 +1,4 @@
-# Achievement 1 Project:
-
-# avaScript App (Bulls and Apes)
+# JavaScript App (Bulls and Apes)
 
 ## Objective
 
