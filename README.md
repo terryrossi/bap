@@ -6,19 +6,19 @@
 
 ## Features
 
-**User Goals**
+### User Goals
 
 To view a list of data and see more details for a given NFT item from the Bulls and Apes Project on demand.
 
-**Key Features**
+### Key Features
 
 - Load data from an external source (API)
 - View a list of items
 - On user action (e.g., by clicking on a list item), view details for that item
 
-**Technical Requirements**
+### Technical Requirements
 
-### Required:
+**Required:**
 
 - The app must load data from an external API; for instance, Etherscan's API or directly from Ethereum's Blockchain.
 - The app must display a list of items loaded from that API after the page is loaded.
@@ -34,13 +34,13 @@ To view a list of data and see more details for a given NFT item from the Bulls 
 - The app should be deployed to a publicly accessible platform like GitHub Pages.
 - The app must work in Chrome, Firefox, Safari, Edge, and Internet Explorer 11.
 
-### Nice to Have:
+**Nice to Have:**
 
 - The app should show loading indicators while loading data.
 - The app should handle errors (such as trying to load data while offline) and show user-friendly
   error messages.
 
-### Optional: Advanced Deliverables
+**Optional: Advanced Deliverables**
 
 In addition to all of the above, more advanced features can be added:
 
