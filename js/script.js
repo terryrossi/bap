@@ -1,24 +1,19 @@
-const bullsList = [
-  { id: 1, guild: "East", type: "Bull" },
-  { id: 2, guild: "South", type: "Bull" },
-  { id: 3, guild: "North", type: "God" },
-  { id: 4, guild: "West", type: "God" },
-];
-const labelList = [
-  "First",
-  "Second",
-  "third",
-  "Fourth",
-  "Fith",
-  "Sixth",
-  "Seventh",
-  "Eighth",
-  "Nineth",
-  "Tenth",
-];
+const pokemonList = [];
 
-for (i = 0; i < bullsList.length; i++) {
+let pokemon = { name: "Bulbasaur", height: 0.7, types: ["grass", "poison"] };
+pokemonList.push(pokemon);
+
+pokemon = { name: "Ivysaur", height: 1, types: ["grass", "poison"] };
+pokemonList.push(pokemon);
+
+pokemon = { name: "Venusaur", height: 2, types: ["grass", "poison"] };
+pokemonList.push(pokemon);
+
+pokemon = { name: "Charmander", height: 0.6, types: ["fire"] };
+pokemonList.push(pokemon);
+
+for (i = 0; i < pokemonList.length; i++) {
   console.log(
-    `The ${labelList[i]} ${bullsList[i].type} is from the ${bullsList[i].guild} Guild`
+    `${pokemonList[i].name} is ${pokemonList[i].height} meter tall and is of ${pokemonList[i].types} type(s)`
   );
 }
