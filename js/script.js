@@ -50,11 +50,11 @@ pokemonList.forEach(function (pokemon) {
   document.write(finalText);
 });
 
-result = function divide(dividend, divisor) {
-  if (divisor === 0) {
-    return "you are trying to divide by 0";
-  } else {
-    return "Result is: " + dividend / divisor;
-  }
-};
-console.log(result(10, 3));
+// result = function divide(dividend, divisor) {
+//   if (divisor === 0) {
+//     return "you are trying to divide by 0";
+//   } else {
+//     return "Result is: " + dividend / divisor;
+//   }
+// };
+// console.log(result(10, 3));
