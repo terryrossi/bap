@@ -28,10 +28,7 @@ pokemon = { name: "Charmander", height: 0.6, types: ["fire"], color: "red" };
 pokemonList.push(pokemon);
 
 // For Loop for each Pokemon
-for (i = 0; i < pokemonList.length; i++) {
-  //   Extract the Pokemon Object
-  pokemon = pokemonList[i];
-
+pokemonList.forEach(function (pokemon) {
   //   Ternary operator to fill up extra WOW! text for size over 1.5
   let wow =
     pokemon.height >= 1.5
@@ -51,4 +48,13 @@ for (i = 0; i < pokemonList.length; i++) {
 </p></div>`;
 
   document.write(finalText);
-}
+});
+
+result = function divide(dividend, divisor) {
+  if (divisor === 0) {
+    return "you are trying to divide by 0";
+  } else {
+    return "Result is: " + dividend / divisor;
+  }
+};
+console.log(result(10, 3));
