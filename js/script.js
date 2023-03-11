@@ -103,10 +103,10 @@ const containerPokemons = document.getElementById("containerPokemons");
 
 //
 //
-//
+///////////////////////////////////////////////////////
 
 //
-// DISPLAY FUNCTION...
+// DISPLAY POKEMONS FUNCTION...
 //
 function showHTML(pokemons) {
     // Using ForEach Loop for each Pokemon
@@ -142,23 +142,20 @@ function showHTML(pokemons) {
 // SEARCH FUNCTION...
 //
 function searchPokemon() {
-    form.addEventListener("submit", (e) => {
-        e.preventDefault();
-
-        // Find Pokemon
-        console.log(`Search name: ${pokemonSearchName}`);
-
-        const pokemon = pokemonRepository.getAll().filter(function (pokemon) {
-            if (pokemon.name === pokemonSearchName) {
-                return pokemon;
-            }
-        });
-        console.log(`Pokemon searched:`);
-        console.log(pokemon);
-
-        containerPokemon.innerHTML = "";
-        showHTML(pokemon);
-    });
+    // form.addEventListener("submit", (e) => {
+    //     e.preventDefault();
+    //     // Find Pokemon
+    //     console.log(`Search name: ${pokemonSearchName}`);
+    //     const pokemon = pokemonRepository.getAll().filter(function (pokemon) {
+    //         if (pokemon.name === pokemonSearchName) {
+    //             return pokemon;
+    //         }
+    //     });
+    //     console.log(`Pokemon searched:`);
+    //     console.log(pokemon);
+    //     containerPokemon.innerHTML = "";
+    //     showHTML(pokemon);
+    // });
 }
 // END OF SEARCH FUNCTION...
 //
