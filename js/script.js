@@ -123,54 +123,47 @@ and is of ${typeFormated} ${pokemon.types.length > 1 ? "types" : "type"}</p></di
 	}
 	//  End of addListItem
 	//
+	//////////////////////////////////////////////////////////////////
+	//
+	// SEARCH FUNCTION...
+	//
+	function search(searchName) {
+		// Find Pokemon
+		const foundPokemon = pokemonRepository.getAll().filter(function (pokemon) {
+			if (pokemon.name.toLowerCase() === searchName.toLowerCase()) {
+				return pokemon;
+			}
+		});
+		return foundPokemon;
+	}
+	//
+	// END OF SEARCH FUNCTION...
+	//
+	////////////////////////////////////////////////////////////////////
+	//
+	// DISPLAY POKEMONS FUNCTION. SENDS HTML TO THE DOM ...
+	//
+	function showHTML(pokemonList) {
+		pokemonList.forEach(function (pokemon) {
+			pokemonRepository.addListItem(pokemon);
+		});
+	}
+	// END OF DISPLAY FUNCTION...
+	//
 	////////////////////////////////////////////////////////////
 
 	return {
 		add,
 		getAll,
 		addListItem,
-		// search,
-		// showHTML,
+		search,
+		showHTML,
 	};
 })();
 //
-///////////////////////////////////   END OF IIFE POKEMON INITIALIZATION FUNCTIONS  /////////////////////////////////
-//
-//
-//
-// SEARCH FUNCTION...
-//
-function searchPoke(searchName) {
-	// Find Pokemon
-	const pokemonSearchedList = [];
-	const pokemon = pokemonRepository.getAll().filter(function (pokemon) {
-		if (pokemon.name.toLowerCase() === searchName.toLowerCase()) {
-			console.log("pokemon found...");
-			console.log(pokemon);
-			return "TOTOTOTOTOTOTOTO";
-
-			// pokemonSearchedList.push(pokemon);
-			// console.log(`pokemonSearchedList : ${pokemonSearchedList}`);
-		}
-	});
-}
-//
-// END OF SEARCH FUNCTION...
-//
-//////////////////////////////////////////////////////////////////
-//
-// DISPLAY POKEMONS FUNCTION. SENDS HTML TO THE DOM ...
-//
-function showHTML(pokemonList) {
-	console.log(`showHTML - pokemonList ${pokemonList}`);
-	pokemonList.forEach(function (pokemon) {
-		pokemonRepository.addListItem(pokemon);
-	});
-}
-// END OF DISPLAY FUNCTION...
+///////////////////////   END OF IIFE POKEMON INITIALIZATION FUNCTIONS  ////////////////////
 //
 
-////////////////////////////////////////////////////////////////////
 //
 // ************  PROGRAM EXECUTION... **************
 //
@@ -184,16 +177,12 @@ const newPokemon = {
 pokemonRepository.add(newPokemon);
 //
 //  SHOW ALL POKEMONS
-
-// pokemonRepository.showHTML(pokemonRepository.getAll());
+pokemonRepository.showHTML(pokemonRepository.getAll());
 
 // SHOW ONLY SEARCHED POKEMON
-const pokemonSearchName = "VenUsaur";
-console.log("result of search");
-const resultOfSearch = searchPoke(pokemonSearchName);
-console.log(resultOfSearch);
-
-showHTML(pokemonRepository.getAll());
+// const pokemonSearchName = "VenUsaur";
+// const resultOfSearch = pokemonRepository.search(pokemonSearchName);
+// pokemonRepository.showHTML(resultOfSearch);
 //
 //
 // TESTING...
