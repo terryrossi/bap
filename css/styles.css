@@ -53,12 +53,12 @@ body {
 	font-size: var(--font-size);
 }
 div {
-	background-color: var(--background-color-grid-item);
+	/* background-color: var(--background-color-grid-item); */
 	/* Adds a 10px inner spacing to all sides */
 	padding: 10px;
 	/* Adds a 10px outer spacing to all sides */
-	margin: 10px 20px;
-	border: 1px solid black;
+	/* margin: 10px 20px; */
+	/* border: 1px solid black; */
 	border-radius: 5px;
 	/* Attributes describe: thickness, type, color */
 }
@@ -137,6 +137,7 @@ button,
 	text-decoration: none;
 	/*adds spacing to the button (this will be discussed more in-depth later) */
 	padding: 10px;
+	margin: 5px auto;
 	border-radius: 3px;
 	/* gives the button a bottom border with a width of 2px, a type of solid, and a color in RGBA format */
 	border-bottom: 2px solid rgba(0, 0, 0, 0.3);
@@ -179,14 +180,20 @@ hr {
 
 /* Make the header a Flex-box which will include 2 items */
 .page-header {
-	display: flex;
-	justify-content: space-between;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	grid-template-rows: 1;
+	/* justify-content: space-between; */
 	align-items: center;
+}
+.welcome-title {
+	grid-column-start: 2;
+	text-align: center;
 }
 
 .page-header__logo--images {
-	/* width: 50px;
-  height: 50px; */
+	width: 150px;
+	height: 150px;
 	border-radius: 50px;
 }
 
@@ -225,4 +232,21 @@ hr {
 	/* justify-items: center; */
 
 	/* color: red; */
+}
+.pokemon-container {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	grid-template-rows: 1;
+}
+.pokemon-list {
+	grid-column-start: 2;
+	/* margin: 0px auto; */
+	/* text-align: center; */
+}
+.pokemon-list__item {
+	list-style-type: none;
+	text-align: center;
+}
+.pokemon-button {
+	width: 150px;
 }

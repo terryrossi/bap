@@ -5,11 +5,17 @@
 		<!-- To remove Warning in console? -->
 		<!-- Error with Permissions-Policy header: Origin trial controlled feature not enabled: 'interest-cohort' -->
 		<!-- <meta http-equiv="Permissions-Policy" content="interest-cohort=()" /> -->
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1" />
 		<!-- Doesn't seem to work. Has to do with opting-out of FLoC? 
     -->
-
 		<title>Pokedex</title>
+		<link
+			rel="icon"
+			type="image/svg"
+			href="./images/pokemon_icon.svg"
+			sizes="32x32" />
 		<link
 			rel="stylesheet"
 			href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
@@ -17,28 +23,48 @@
 			crossorigin="anonymous"
 			referrerpolicy="no-referrer" />
 		<!-- Custom GOOGLE Fonts-->
-		<link rel="preconnect" href="https://fonts.googleapis.com" />
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			rel="preconnect"
+			href="https://fonts.googleapis.com" />
+		<link
+			rel="preconnect"
+			href="https://fonts.gstatic.com"
+			crossorigin />
 		<link
 			href="https://fonts.googleapis.com/css2?family=Gloock&family=Lato:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,100;0,400;0,700;1,400;1,700&display=swap"
 			rel="stylesheet" />
 
-		<link rel="stylesheet" type="text/css" href="css/styles.css" />
+		<link
+			rel="stylesheet"
+			type="text/css"
+			href="css/styles.css" />
 	</head>
 	<body>
 		<header class="page-header">
 			<!-- Add the logo here -->
-			<div class="noborder nocolor">
+			<div class="">
 				<!-- <div> -->
-				<a href="index.html"><img class="page-header__logo--images" src="./images/pokemon.png" alt="Pokedex" title="Pokedex" /></a>
+				<a href="index.html"
+					><img
+						class="page-header__logo--images"
+						src="./images/pokemon_icon.svg"
+						alt="Pokedex"
+						title="Pokedex"
+				/></a>
 			</div>
 			<!-- <div> -->
-			<div class="noborder nocolor">
+			<div class="welcome-title">
 				<h2>Welcome to POKEDEX!</h2>
 			</div>
 			<div class="hidden">
 				<!-- <div> -->
-				<a href="index.html"><img class="page-header__logo--images" src="./images/pokemon.png" alt="" title="" /></a>
+				<a href="index.html"
+					><img
+						class="page-header__logo--images"
+						src="./images/pokemon.png"
+						alt=""
+						title=""
+				/></a>
 			</div>
 		</header>
 		<main>
@@ -66,12 +92,13 @@
 				</form>
 				<br />
 			</div> -->
+			<div class="pokemon-container">
+				<div class="pokemon-list"><ul></ul></div>
+			</div>
+			<hr />
 		</main>
 
 		<script src="./js/script.js"></script>
-		<hr />
-		<br />
-		<br />
 
 		<br />
 		<br />

@@ -2,9 +2,10 @@
 //
 // Initialize list of Pokemons using IIFE to protect variables
 
-let pokemon = {};
+// *******   IIFE   ********
 const pokemonRepository = (function () {
 	const pokemonList = [];
+	let pokemon = {};
 
 	pokemon = {
 		name: "Bulbasaur",
@@ -88,19 +89,11 @@ const pokemonRepository = (function () {
 	//
 	// end of function getAll
 	//
-	return {
-		add,
-		getAll,
-	};
-})();
-//
-///////////////////////////////////   END OF IIFE POKEMON INITIALIZATION FUNCTIONS  /////////////////////////////////
-//
-//
-// DISPLAY POKEMONS FUNCTION. SENDS HTML TO THE DOM ...
-//
-function showHTML(pokemonList) {
-	pokemonList.forEach(function (pokemon) {
+	///////////////////////////////////////////////////
+	//
+	// function addListItem
+
+	function addListItem(pokemon) {
 		//   Test for Pokemon size over 1.5
 		const wow = pokemon.height >= 1.5 ? "<a class='wow'> (WOW!!! That is Huge!!!) </a>" : "";
 
@@ -116,48 +109,80 @@ function showHTML(pokemonList) {
 		} meter tall ${wow}
     and is of ${typeFormated} ${pokemon.types.length > 1 ? "types" : "type"}</p></div>`;
 		//
-		document.write(finalText);
-	});
-}
-// END OF DISPLAY FUNCTION...
-//
-////////////////////////////////////////////////////////////
-//
-// SEARCH FUNCTION...
-//
-function searchPokemon(pokemonSearchName) {
-	// Find Pokemon
-	const pokemon = pokemonRepository.getAll().filter(function (pokemon) {
-		if (pokemon.name.toLowerCase() === pokemonSearchName.toLowerCase()) {
-			return pokemon;
-		}
-	});
+		// document.write(finalText);
+		//
+		const pokemonHtmlList = document.querySelector(".pokemon-list");
+		const li = document.createElement("li");
+		const button = document.createElement("button");
+		button.classList.add("pokemon-button");
+		button.innerHTML = pokemon.name;
+		//
+		li.appendChild(button);
+		li.classList.add("pokemon-list__item");
+		pokemonHtmlList.appendChild(li);
+	}
+	//  End of addListItem
+	//
+	//////////////////////////////////////////////////////////////////
+	//
+	// SEARCH FUNCTION...
+	//
+	function search(searchName) {
+		// Find Pokemon
+		const foundPokemon = pokemonRepository.getAll().filter(function (pokemon) {
+			if (pokemon.name.toLowerCase() === searchName.toLowerCase()) {
+				return pokemon;
+			}
+		});
+		return foundPokemon;
+	}
+	//
+	// END OF SEARCH FUNCTION...
+	//
+	////////////////////////////////////////////////////////////////////
+	//
+	// DISPLAY POKEMONS FUNCTION. SENDS HTML TO THE DOM ...
+	//
+	function showHTML(pokemonList) {
+		pokemonList.forEach(function (pokemon) {
+			pokemonRepository.addListItem(pokemon);
+		});
+	}
+	// END OF DISPLAY FUNCTION...
+	//
+	////////////////////////////////////////////////////////////
 
-	showHTML(pokemon);
-}
-
-// END OF SEARCH FUNCTION...
+	return {
+		add,
+		getAll,
+		addListItem,
+		search,
+		showHTML,
+	};
+})();
 //
-////////////////////////////////////////////////////////////////////
+///////////////////////   END OF IIFE POKEMON INITIALIZATION FUNCTIONS  ////////////////////
+//
+
 //
 // ************  PROGRAM EXECUTION... **************
 //
 // Add a new Pokemon
-pokemon = {
+const newPokemon = {
 	name: "Titi",
 	height: 100,
 	types: ["car", "truck"],
 	color: "purple",
 };
-pokemonRepository.add(pokemon);
+pokemonRepository.add(newPokemon);
 //
 //  SHOW ALL POKEMONS
-showHTML(pokemonRepository.getAll());
+pokemonRepository.showHTML(pokemonRepository.getAll());
 
 // SHOW ONLY SEARCHED POKEMON
 // const pokemonSearchName = "VenUsaur";
-// searchPokemon(pokemonSearchName);
-
+// const resultOfSearch = pokemonRepository.search(pokemonSearchName);
+// pokemonRepository.showHTML(resultOfSearch);
 //
 //
 // TESTING...
