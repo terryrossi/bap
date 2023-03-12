@@ -50,7 +50,9 @@ const pokemonRepository = (function () {
 				`The argument passed to the function "add" MUST be an object 
         with the following keys: ${Object.keys(pokemonRepository.getAll()[0])}.`
 			);
-			console.log(`The New Object has NOT been added to the list. Please correct the Error and Resubmit...`);
+			console.log(
+				`The New Object has NOT been added to the list. Please correct the Error and Resubmit...`
+			);
 		} else {
 			// Pokemon is indeed an Object, now let's check if keys are the correct ones...
 
@@ -65,7 +67,9 @@ const pokemonRepository = (function () {
 
 				console.log(`VALID KEYS are: `);
 				console.log(`${Object.keys(pokemonRepository.getAll()[0])}.`);
-				console.log(`The New Object has NOT been added to the list. Please correct the Error and Resubmit...`);
+				console.log(
+					`The New Object has NOT been added to the list. Please correct the Error and Resubmit...`
+				);
 			} else {
 				// All is good, Push pokemon to the pokemonRepository
 				pokemonList.push(pokemon);
@@ -107,7 +111,9 @@ function showHTML(pokemonList) {
 		// Bulbasaur is 0.7 meter tall and is of grass and poison types
 		// Each line should be of the color specified in the object.color
 
-		const finalText = `<div class="${pokemon.color}"><p>${pokemon.name} is ${pokemon.height} meter tall ${wow}
+		const finalText = `<div class="${pokemon.color}"><p>${pokemon.name} is ${
+			pokemon.height
+		} meter tall ${wow}
     and is of ${typeFormated} ${pokemon.types.length > 1 ? "types" : "type"}</p></div>`;
 		//
 		document.write(finalText);
