@@ -57,8 +57,7 @@ const pokemonRepository = (function () {
 		} else {
 			// Pokemon is indeed an Object, now let's check if keys are the correct ones...
 
-			// Grab the Original list of keys of the pokemon object from the First element of the pokemonRepository
-			// for furure validation
+			// find Valid keys from first ogject
 			const validPokemonKeys = Object.keys(pokemonRepository.getAll()[0]);
 
 			// Compare keys of argument received with valid keys
@@ -72,7 +71,7 @@ const pokemonRepository = (function () {
 					`The New Object has NOT been added to the list. Please correct the Error and Resubmit...`
 				);
 			} else {
-				// All is good, Push pokemon to the pokemonRepository
+				// If Keys are Valid, Push pokemon to the pokemonRepository
 				pokemonList.push(pokemon);
 			}
 		}
@@ -91,19 +90,16 @@ const pokemonRepository = (function () {
 	//
 	///////////////////////////////////////////////////
 	//
-	// function addListItem
+	// function addListItem - Created the HTML for each Pokemon
 
 	function addListItem(pokemon) {
 		//   Test for Pokemon size over 1.5
-		//
 		const wow = pokemon.height >= 1.5 ? "<a class='wow'> (WOW!!! That is Huge!!!) </a>" : "";
 
 		// Format text when multiple types are present
-		//
 		const typeFormated = pokemon.types.join(" and ");
 
 		// Format the final text with Pokemon details.
-		//
 		const finalText = `<div class="${pokemon.color}"><p>${pokemon.name} is ${
 			pokemon.height
 		} meter tall ${wow}
@@ -111,32 +107,44 @@ const pokemonRepository = (function () {
 		//
 		// Format HTML List Item;
 		//
-		// Create variables from HTML Elements:
+		// Variables from HTML Elements:
 		const pokemonHtmlList = document.querySelector(".pokemon-list");
 		const li = document.createElement("li");
 		const button = document.createElement("button");
 
-		// add Class to button
+		// add CSS Class to button
 		button.classList.add("pokemon-button");
 
 		// add Pokemon name to button text
-		button.innerHTML = pokemon.name;
+		button.innerText = pokemon.name;
 
 		// add eventListener to the Button
-		button.addEventListener("click", function (event) {
-			showDetails(pokemon);
-		});
+		// button.addEventListener("click", function (event) {
+		// 	showDetails(pokemon);
+		// });
+		addEventListenerToButton(button, "click", pokemon);
 
-		// insert the button into the list line
+		// insert the button into the line element
 		li.appendChild(button);
 
-		// add Class to list line
+		// add Class to line element
 		li.classList.add("pokemon-list__item");
 
-		// add the line into the list
+		// add the line element into the list element
 		pokemonHtmlList.appendChild(li);
 	}
 	//  End of addListItem
+	//
+	/////////////////////////////////////////////////////////////////
+	//
+	// Add an Event Listener to a Button
+	//
+	function addEventListenerToButton(button, type, pokemon) {
+		button.addEventListener(type, function (event) {
+			showDetails(pokemon);
+		});
+	}
+	// end of Add an Event Listener to a Button
 	//
 	//////////////////////////////////////////////////////////////////
 	//
@@ -176,6 +184,7 @@ const pokemonRepository = (function () {
 	//
 	////////////////////////////////////////////////////////////
 
+	// Returning all functions from IIFE
 	return {
 		add,
 		getAll,
@@ -186,10 +195,10 @@ const pokemonRepository = (function () {
 })();
 //
 ///////////////////////   END OF IIFE POKEMON INITIALIZATION FUNCTIONS  ////////////////////
-//
 
-//
-// ************  PROGRAM EXECUTION... **************
+///////////////////////////////////////////////////////////////////////////////////////////
+
+/////////////////////////////////// PROGRAM FLOW... ///////////////////////////////
 //
 // Add a new Pokemon
 const newPokemon = {
