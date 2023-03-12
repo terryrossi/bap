@@ -95,30 +95,40 @@ const pokemonRepository = (function () {
 
 	function addListItem(pokemon) {
 		//   Test for Pokemon size over 1.5
+		//
 		const wow = pokemon.height >= 1.5 ? "<a class='wow'> (WOW!!! That is Huge!!!) </a>" : "";
 
 		// Format text when multiple types are present
+		//
 		const typeFormated = pokemon.types.join(" and ");
 
-		// Format the final text with Pokemon details. Should look like the example below:
-		// Bulbasaur is 0.7 meter tall and is of grass and poison types
-		// Each line should be of the color specified in the object.color
-
+		// Format the final text with Pokemon details.
+		//
 		const finalText = `<div class="${pokemon.color}"><p>${pokemon.name} is ${
 			pokemon.height
 		} meter tall ${wow}
     and is of ${typeFormated} ${pokemon.types.length > 1 ? "types" : "type"}</p></div>`;
 		//
-		// document.write(finalText);
+		// Format HTML List Item;
 		//
+		// Create variables from HTML Elements:
 		const pokemonHtmlList = document.querySelector(".pokemon-list");
 		const li = document.createElement("li");
 		const button = document.createElement("button");
+
+		// add Class to button
 		button.classList.add("pokemon-button");
+
+		// add Pokemon name to button text
 		button.innerHTML = pokemon.name;
-		//
+
+		// insert the button into the list line
 		li.appendChild(button);
+
+		// add Class to list line
 		li.classList.add("pokemon-list__item");
+
+		// add the line into the list
 		pokemonHtmlList.appendChild(li);
 	}
 	//  End of addListItem
