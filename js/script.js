@@ -122,6 +122,11 @@ const pokemonRepository = (function () {
 		// add Pokemon name to button text
 		button.innerHTML = pokemon.name;
 
+		// add eventListener to the Button
+		button.addEventListener("click", function (event) {
+			showDetails(pokemon);
+		});
+
 		// insert the button into the list line
 		li.appendChild(button);
 
@@ -132,6 +137,15 @@ const pokemonRepository = (function () {
 		pokemonHtmlList.appendChild(li);
 	}
 	//  End of addListItem
+	//
+	//////////////////////////////////////////////////////////////////
+	//
+	// SHOW DETAILS FUNCTION...
+	//
+	function showDetails(pokemon) {
+		console.log(pokemon);
+	}
+	//  End of show details function
 	//
 	//////////////////////////////////////////////////////////////////
 	//
