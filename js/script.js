@@ -2,9 +2,10 @@
 //
 // Initialize list of Pokemons using IIFE to protect variables
 
-let pokemon = {};
+// *******   IIFE   ********
 const pokemonRepository = (function () {
 	const pokemonList = [];
+	let pokemon = {};
 
 	pokemon = {
 		name: "Bulbasaur",
@@ -50,7 +51,9 @@ const pokemonRepository = (function () {
 				`The argument passed to the function "add" MUST be an object 
         with the following keys: ${Object.keys(pokemonRepository.getAll()[0])}.`
 			);
-			console.log(`The New Object has NOT been added to the list. Please correct the Error and Resubmit...`);
+			console.log(
+				`The New Object has NOT been added to the list. Please correct the Error and Resubmit...`
+			);
 		} else {
 			// Pokemon is indeed an Object, now let's check if keys are the correct ones...
 
@@ -65,7 +68,9 @@ const pokemonRepository = (function () {
 
 				console.log(`VALID KEYS are: `);
 				console.log(`${Object.keys(pokemonRepository.getAll()[0])}.`);
-				console.log(`The New Object has NOT been added to the list. Please correct the Error and Resubmit...`);
+				console.log(
+					`The New Object has NOT been added to the list. Please correct the Error and Resubmit...`
+				);
 			} else {
 				// All is good, Push pokemon to the pokemonRepository
 				pokemonList.push(pokemon);
@@ -84,19 +89,11 @@ const pokemonRepository = (function () {
 	//
 	// end of function getAll
 	//
-	return {
-		add,
-		getAll,
-	};
-})();
-//
-///////////////////////////////////   END OF IIFE POKEMON INITIALIZATION FUNCTIONS  /////////////////////////////////
-//
-//
-// DISPLAY POKEMONS FUNCTION. SENDS HTML TO THE DOM ...
-//
-function showHTML(pokemonList) {
-	pokemonList.forEach(function (pokemon) {
+	///////////////////////////////////////////////////
+	//
+	// function addListItem
+
+	function addListItem(pokemon) {
 		//   Test for Pokemon size over 1.5
 		const wow = pokemon.height >= 1.5 ? "<a class='wow'> (WOW!!! That is Huge!!!) </a>" : "";
 
@@ -107,51 +104,96 @@ function showHTML(pokemonList) {
 		// Bulbasaur is 0.7 meter tall and is of grass and poison types
 		// Each line should be of the color specified in the object.color
 
-		const finalText = `<div class="${pokemon.color}"><p>${pokemon.name} is ${pokemon.height} meter tall ${wow}
-    and is of ${typeFormated} ${pokemon.types.length > 1 ? "types" : "type"}</p></div>`;
+		const finalText = `<div class="${pokemon.color}"><p>${pokemon.name} is ${
+			pokemon.height
+		} meter tall ${wow}
+and is of ${typeFormated} ${pokemon.types.length > 1 ? "types" : "type"}</p></div>`;
 		//
-		document.write(finalText);
+		// document.write(finalText);
+		//
+		const pokemonHtmlList = document.querySelector(".pokemon-list");
+		const li = document.createElement("li");
+		const button = document.createElement("button");
+		button.classList.add("pokemon-button");
+		button.innerHTML = pokemon.name;
+		//
+		li.appendChild(button);
+		li.classList.add("pokemon-list__item");
+		pokemonHtmlList.appendChild(li);
+	}
+	//  End of addListItem
+	//
+	////////////////////////////////////////////////////////////
+
+	return {
+		add,
+		getAll,
+		addListItem,
+		// search,
+		// showHTML,
+	};
+})();
+//
+///////////////////////////////////   END OF IIFE POKEMON INITIALIZATION FUNCTIONS  /////////////////////////////////
+//
+//
+//
+// SEARCH FUNCTION...
+//
+function searchPoke(searchName) {
+	// Find Pokemon
+	const pokemonSearchedList = [];
+	const pokemon = pokemonRepository.getAll().filter(function (pokemon) {
+		if (pokemon.name.toLowerCase() === searchName.toLowerCase()) {
+			console.log("pokemon found...");
+			console.log(pokemon);
+			return "TOTOTOTOTOTOTOTO";
+
+			// pokemonSearchedList.push(pokemon);
+			// console.log(`pokemonSearchedList : ${pokemonSearchedList}`);
+		}
+	});
+}
+//
+// END OF SEARCH FUNCTION...
+//
+//////////////////////////////////////////////////////////////////
+//
+// DISPLAY POKEMONS FUNCTION. SENDS HTML TO THE DOM ...
+//
+function showHTML(pokemonList) {
+	console.log(`showHTML - pokemonList ${pokemonList}`);
+	pokemonList.forEach(function (pokemon) {
+		pokemonRepository.addListItem(pokemon);
 	});
 }
 // END OF DISPLAY FUNCTION...
 //
-////////////////////////////////////////////////////////////
-//
-// SEARCH FUNCTION...
-//
-function searchPokemon(pokemonSearchName) {
-	// Find Pokemon
-	const pokemon = pokemonRepository.getAll().filter(function (pokemon) {
-		if (pokemon.name.toLowerCase() === pokemonSearchName.toLowerCase()) {
-			return pokemon;
-		}
-	});
 
-	showHTML(pokemon);
-}
-
-// END OF SEARCH FUNCTION...
-//
 ////////////////////////////////////////////////////////////////////
 //
 // ************  PROGRAM EXECUTION... **************
 //
 // Add a new Pokemon
-pokemon = {
+const newPokemon = {
 	name: "Titi",
 	height: 100,
 	types: ["car", "truck"],
 	color: "purple",
 };
-pokemonRepository.add(pokemon);
+pokemonRepository.add(newPokemon);
 //
 //  SHOW ALL POKEMONS
-showHTML(pokemonRepository.getAll());
+
+// pokemonRepository.showHTML(pokemonRepository.getAll());
 
 // SHOW ONLY SEARCHED POKEMON
-// const pokemonSearchName = "VenUsaur";
-// searchPokemon(pokemonSearchName);
+const pokemonSearchName = "VenUsaur";
+console.log("result of search");
+const resultOfSearch = searchPoke(pokemonSearchName);
+console.log(resultOfSearch);
 
+showHTML(pokemonRepository.getAll());
 //
 //
 // TESTING...
